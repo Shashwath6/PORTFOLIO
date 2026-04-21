@@ -476,7 +476,7 @@ if run_button:
         st.info(f"**🤖 AI Insight**: The Markowitz engine found mathematically that **{mvo_max_asset}** drove historical returns, greedily allocating **{mvo_max_val:.1f}%** of your capital to it. Notice how the Risk Parity shield forcefully scales {mvo_max_asset} down to **{rp_alloc:.1f}%** to protect your portfolio from severe concentration danger.")
         
         with st.expander("🔍 View Raw Weight Data (The Blue Matrix)"):
-            st.dataframe(master_df.style.background_gradient(cmap='Blues', axis=None), use_container_width=True)
+            st.dataframe(master_df, use_container_width=True)
             
     with tab2:
         st.markdown("### 📈 Live Historical Backtesting")
@@ -804,7 +804,7 @@ if run_button:
             'Asset': final_weights.index,
             'Recommended Weight (%)': (final_weights.values * 100).round(2)
         })
-        st.dataframe(final_display.style.background_gradient(cmap='Blues', subset=['Recommended Weight (%)']), use_container_width=True, hide_index=True)
+        st.dataframe(final_display, use_container_width=True, hide_index=True)
         
         top_asset = final_weights.idxmax()
         top_pct = final_weights.max() * 100
