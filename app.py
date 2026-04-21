@@ -5,14 +5,23 @@ import plotly.express as px
 import plotly.graph_objects as go
 import time
 
-# Internal Modules
-from core.data_engine import InstitutionalDataEngine
-from models.mvo import MarkowitzOptimizer
-from models.risk_parity import RiskParityModel
-from models.hrp_ml import HierarchicalRiskParity
-from models.black_litterman import BlackLittermanEngine
-from models.deep_learning_alpha import AlphaModelTrainer, TimeSeriesTransformer, LSTMAlphaGenerator
-from models.explainable_ai import XAIAuditor
+# Internal Modules (supports both folder structure and flat deployment)
+try:
+    from core.data_engine import InstitutionalDataEngine
+    from models.mvo import MarkowitzOptimizer
+    from models.risk_parity import RiskParityModel
+    from models.hrp_ml import HierarchicalRiskParity
+    from models.black_litterman import BlackLittermanEngine
+    from models.deep_learning_alpha import AlphaModelTrainer, TimeSeriesTransformer, LSTMAlphaGenerator
+    from models.explainable_ai import XAIAuditor
+except ModuleNotFoundError:
+    from data_engine import InstitutionalDataEngine
+    from mvo import MarkowitzOptimizer
+    from risk_parity import RiskParityModel
+    from hrp_ml import HierarchicalRiskParity
+    from black_litterman import BlackLittermanEngine
+    from deep_learning_alpha import AlphaModelTrainer, TimeSeriesTransformer, LSTMAlphaGenerator
+    from explainable_ai import XAIAuditor
 import torch
 
 # ------------------------------------------------------------------------
